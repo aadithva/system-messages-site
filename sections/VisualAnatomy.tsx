@@ -14,7 +14,7 @@ export default function VisualAnatomy() {
       </p>
 
       {/* Inline Notice */}
-      <h3 id="inline-notice">Inline Notice <span className="text-sm font-normal text-[var(--fluent-fg4)]">— Action Feedback</span></h3>
+      <h3 id="inline-notice">Inline Notice <span className="text-sm font-normal text-[var(--fluent-fg4)]">— Confirmation</span></h3>
       <p>
         Used for action confirmations. Lightweight, non-interruptive.
       </p>
@@ -70,7 +70,7 @@ export default function VisualAnatomy() {
       </Callout>
 
       {/* Divider */}
-      <h3 id="divider">Divider <span className="text-sm font-normal text-[var(--fluent-fg4)]">— Session Lifecycle</span></h3>
+      <h3 id="divider">Divider <span className="text-sm font-normal text-[var(--fluent-fg4)]">— State Change</span></h3>
       <p>
         Used to mark structural breaks in the timeline. Visually separates &quot;before&quot; from &quot;after.&quot;
       </p>
@@ -119,10 +119,10 @@ export default function VisualAnatomy() {
         </p>
       </Callout>
 
-      {/* Banner & Inline Notice — Access Notice */}
-      <h3 id="banner">Banner &amp; Inline Notice <span className="text-sm font-normal text-[var(--fluent-fg4)]">— Access Notice</span></h3>
+      {/* Banner & Inline Notice — Notice */}
+      <h3 id="banner">Banner &amp; Inline Notice <span className="text-sm font-normal text-[var(--fluent-fg4)]">— Notice</span></h3>
       <p>
-        Access Notice uses two visual expressions depending on scope.
+        Notice uses two visual expressions depending on scope.
       </p>
 
       <h4>Banner — conversation-wide</h4>

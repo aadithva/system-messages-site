@@ -1,15 +1,15 @@
 interface CategoryBadgeProps {
   category:
-    | "action-feedback"
-    | "session-lifecycle"
-    | "access-notice"
+    | "confirmation"
+    | "state-change"
+    | "notice"
     | "not-system-message";
 }
 
 const config = {
-  "action-feedback": { label: "Action Feedback", bg: "#e8ebfa", color: "#464FEB" },
-  "session-lifecycle": { label: "Session Lifecycle", bg: "#e1f5e4", color: "#107c10" },
-  "access-notice": { label: "Access Notice", bg: "#f0f6ff", color: "#0078d4" },
+  "confirmation": { label: "Confirmation", bg: "#e8ebfa", color: "#464FEB" },
+  "state-change": { label: "State Change", bg: "#e1f5e4", color: "#107c10" },
+  "notice": { label: "Notice", bg: "#f0f6ff", color: "#0078d4" },
   "not-system-message": { label: "Not a System Message", bg: "#f3f2f1", color: "#707070" },
 };
 

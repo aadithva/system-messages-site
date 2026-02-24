@@ -40,10 +40,10 @@ export default function Behavior() {
 
       <h3>Timing</h3>
       <ul>
-        <li><strong>Action Feedback:</strong> Appears immediately after the action completes, at the point in the timeline where the action occurred.</li>
-        <li><strong>Session Lifecycle:</strong> Appears immediately when the session or mode ends (or begins).</li>
-        <li><strong>Access Notice (conversation-wide):</strong> Appears when the chat is opened, before any messages are scrolled into view.</li>
-        <li><strong>Access Notice (point-specific):</strong> Appears at the exact point in the timeline where the boundary takes effect.</li>
+        <li><strong>Confirmation:</strong> Appears immediately after the action completes, at the point in the timeline where the action occurred.</li>
+        <li><strong>State Change:</strong> Appears immediately when the session or mode ends (or begins).</li>
+        <li><strong>Notice (conversation-wide):</strong> Appears when the chat is opened, before any messages are scrolled into view.</li>
+        <li><strong>Notice (point-specific):</strong> Appears at the exact point in the timeline where the boundary takes effect.</li>
       </ul>
 
       <h3>Scroll behavior</h3>

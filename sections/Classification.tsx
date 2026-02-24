@@ -15,7 +15,7 @@ export default function Classification() {
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
         <TaxonomyCard
-          category="action-feedback"
+          category="confirmation"
           color="#464FEB"
           question="What just happened?"
           description="Something the user or system did has completed. The message is a receipt."
@@ -32,7 +32,7 @@ export default function Classification() {
           }
         />
         <TaxonomyCard
-          category="session-lifecycle"
+          category="state-change"
           color="#107c10"
           question="What just started or ended?"
           description="A mode, session, or time period has transitioned. The divider separates before from after."
@@ -46,7 +46,7 @@ export default function Classification() {
           }
         />
         <TaxonomyCard
-          category="access-notice"
+          category="notice"
           color="#0078d4"
           question="What should I know about visibility or access?"
           description="A condition about ownership, permissions, visibility, or access — either conversation-wide (Banner) or at a specific point (Inline Notice)."
@@ -64,10 +64,10 @@ export default function Classification() {
         />
       </div>
 
-      <h3 id="action-feedback">Action Feedback</h3>
+      <h3 id="confirmation">Confirmation</h3>
       <p>
         Communicates that something happened. The action is complete; the message is a receipt.
-        Specifically, Action Feedbacks are for <strong>state-changing actions</strong> — actions
+        Specifically, Confirmations are for <strong>state-changing actions</strong> — actions
         that alter the conversation, create something new, or change how the system behaves.
       </p>
       <ul>
@@ -79,7 +79,7 @@ export default function Classification() {
         Examples: &quot;Saved as agent,&quot; &quot;Stopped responding,&quot; &quot;Regenerated with GPT-4&quot;
       </p>
 
-      <h4>What qualifies as an Action Feedback?</h4>
+      <h4>What qualifies as an Confirmation?</h4>
       <p>
         The test is <strong>timeline significance</strong>: if you returned to this conversation
         tomorrow, would you need to know this action happened?
@@ -95,17 +95,17 @@ export default function Classification() {
           {
             action: "Save as agent",
             impact: <strong className="text-[#107c10]">Yes</strong>,
-            pattern: <><strong>Action Feedback</strong> — a new entity was created</>,
+            pattern: <><strong>Confirmation</strong> — a new entity was created</>,
           },
           {
             action: "Stop responding",
             impact: <strong className="text-[#107c10]">Yes</strong>,
-            pattern: <><strong>Action Feedback</strong> — the conversation flow was altered</>,
+            pattern: <><strong>Confirmation</strong> — the conversation flow was altered</>,
           },
           {
             action: "Regenerate with GPT-4",
             impact: <strong className="text-[#107c10]">Yes</strong>,
-            pattern: <><strong>Action Feedback</strong> — the response below uses a different model</>,
+            pattern: <><strong>Confirmation</strong> — the response below uses a different model</>,
           },
           {
             action: "Copy response",
@@ -125,18 +125,18 @@ export default function Classification() {
         ]}
       />
 
-      <Callout type="note" title="Action Feedback vs. Toast">
+      <Callout type="note" title="Confirmation vs. Toast">
         <p>
           Both confirm a completed action, but they differ in <strong>scope</strong>.
-          Action Feedbacks confirm <strong>system/operational actions</strong> that
+          Confirmations confirm <strong>system/operational actions</strong> that
           change state (save, stop, regenerate, export). Toasts confirm <strong>transient
           micro-interactions</strong> with no lasting impact (copy, share, like). Toasts
-          live outside the timeline as ephemeral overlays. Action Feedbacks live
+          live outside the timeline as ephemeral overlays. Confirmations live
           inside the timeline as permanent records.
         </p>
       </Callout>
 
-      <h4>Action Feedback vs. Chat Output</h4>
+      <h4>Confirmation vs. Chat Output</h4>
       <p>
         Not every action in the chat is a system message. If Copilot is <strong>performing
         work and showing you the result</strong> as part of conversation, that&apos;s a Chat
@@ -145,7 +145,7 @@ export default function Classification() {
 
       <SpecTable
         columns={[
-          { header: "System message (Action Feedback)", key: "system" },
+          { header: "System message (Confirmation)", key: "system" },
           { header: "NOT a system message (Chat Output)", key: "chat" },
         ]}
         rows={[
@@ -164,7 +164,7 @@ export default function Classification() {
         ]}
       />
 
-      <h3 id="session-lifecycle">Session Lifecycle</h3>
+      <h3 id="state-change">State Change</h3>
       <p>
         Marks a structural break in the conversation timeline. The chat had a mode
         or session active, and it has now ended (or begun).
@@ -178,10 +178,10 @@ export default function Classification() {
         Examples: &quot;Screen sharing ended,&quot; &quot;Voice chat ended,&quot; &quot;February 23, 2026&quot;
       </p>
 
-      <h3 id="access-notice">Access Notice</h3>
+      <h3 id="notice">Notice</h3>
       <p>
         Communicates a condition about ownership, permissions, visibility, or access.
-        Access Notices come in two forms depending on scope:
+        Notices come in two forms depending on scope:
       </p>
       <ul>
         <li><strong>Conversation-wide</strong> (Banner): Applies to the entire conversation. Appears at the top of the chat surface, above all messages. May be dismissible if non-critical after first read.</li>
@@ -203,17 +203,17 @@ export default function Classification() {
         <p>
           <strong>1. Mutual exclusivity.</strong> Every scenario maps to exactly
           one category. If a scenario seems to fit two, use the more specific one
-          (Action Feedback &gt; Session Lifecycle &gt; Access Notice).
+          (Confirmation &gt; State Change &gt; Notice).
         </p>
         <p>
           <strong>2. Timeline specificity.</strong> If the message is tied to a
-          specific point in the chat timeline, it&apos;s not an Access Notice.
-          Access Notices apply globally.
+          specific point in the chat timeline, it&apos;s not an Notice.
+          Notices apply globally.
         </p>
         <p>
           <strong>3. Action vs. state.</strong> If something &quot;happened&quot;
-          (verb, past tense), it&apos;s likely an Action Feedback. If something
-          &quot;is&quot; (state, present tense), it&apos;s likely an Access Notice.
+          (verb, past tense), it&apos;s likely an Confirmation. If something
+          &quot;is&quot; (state, present tense), it&apos;s likely an Notice.
         </p>
       </Callout>
     </section>
@@ -228,7 +228,7 @@ function TaxonomyCard({
   visualType,
   example,
 }: {
-  category: "action-feedback" | "session-lifecycle" | "access-notice";
+  category: "confirmation" | "state-change" | "notice";
   color: string;
   question: string;
   description: string;

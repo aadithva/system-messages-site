@@ -6,7 +6,7 @@ interface ScenarioCardProps {
   scenario: string;
   currentTreatment?: string;
   problem?: string;
-  category: "action-feedback" | "session-lifecycle" | "access-notice" | "not-system-message";
+  category: "confirmation" | "state-change" | "notice" | "not-system-message";
   visualType: string;
   recommendedTreatment: string;
   changeLevel: "Major" | "Minor" | "Minimal";

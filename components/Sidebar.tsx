@@ -14,9 +14,9 @@ const navItems: NavItem[] = [
     id: "classification",
     label: "Classification",
     children: [
-      { id: "action-feedback", label: "Action Feedback" },
-      { id: "session-lifecycle", label: "Session Lifecycle" },
-      { id: "access-notice", label: "Access Notice" },
+      { id: "confirmation", label: "Confirmation" },
+      { id: "state-change", label: "State Change" },
+      { id: "notice", label: "Notice" },
     ],
   },
   {
