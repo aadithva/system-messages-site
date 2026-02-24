@@ -19,10 +19,10 @@ export default function Overview() {
             A <strong>system message</strong> is any message displayed within the
             chat surface that originates from the system — not from the user and
             not from Copilot. System messages sit outside the normal conversational
-            flow and serve three distinct purposes:
+            flow and serve four distinct purposes:
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <ScopeCard
               label="Confirmations"
               color="#464FEB"
@@ -40,6 +40,12 @@ export default function Overview() {
               color="#0078d4"
               description="A condition about ownership, permissions, visibility, or access — either conversation-wide or at a specific point in the timeline."
               examples="Someone shared this chat with you, this chat is read-only, messages beyond this point are only visible to you"
+            />
+            <ScopeCard
+              label="Feedback"
+              color="#ca5010"
+              description="The system solicits user input about an experience, feature, or interaction quality."
+              examples="How is Copilot performing? (1–5 scale), Rate this voice session"
             />
           </div>
         </div>

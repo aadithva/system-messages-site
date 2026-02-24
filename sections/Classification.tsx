@@ -9,11 +9,11 @@ export default function Classification() {
       <h2>Classification Taxonomy</h2>
 
       <p>
-        Every system message falls into exactly one of three categories. Each category
+        Every system message falls into exactly one of four categories. Each category
         maps to one or more visual types and answers a different question:
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
         <TaxonomyCard
           category="confirmation"
           color="#464FEB"
@@ -59,6 +59,28 @@ export default function Classification() {
               <span className="text-[12px] text-[var(--fluent-fg1)]">
                 <strong>Mona Kane</strong> shared this chat with you
               </span>
+            </div>
+          }
+        />
+        <TaxonomyCard
+          category="feedback"
+          color="#ca5010"
+          question="How was this experience?"
+          description="The system solicits user input about an experience, feature, or interaction quality. Unlike other categories, feedback messages are interactive."
+          visualType="Feedback Card"
+          example={
+            <div className="flex items-center gap-2">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="#616161">
+                <path d="M8 1.5l1.85 3.75L14 5.88l-3 2.93.7 4.12L8 10.88l-3.7 2.05.7-4.12-3-2.93 4.15-.63L8 1.5z" />
+              </svg>
+              <span className="text-[13px] text-[var(--fluent-fg2)]">
+                How is Copilot performing?
+              </span>
+              <div className="flex gap-0.5 ml-1">
+                {[1,2,3,4,5].map((n) => (
+                  <span key={n} className="w-5 h-5 rounded border border-[var(--fluent-stroke2)] bg-white text-[10px] flex items-center justify-center text-[var(--fluent-fg4)]">{n}</span>
+                ))}
+              </div>
             </div>
           }
         />
@@ -191,6 +213,31 @@ export default function Classification() {
         Examples: &quot;Mona Kane shared this chat with you,&quot; &quot;This chat is read-only,&quot; &quot;Messages beyond this point are only visible to you&quot;
       </p>
 
+      <h3 id="feedback">Feedback</h3>
+      <p>
+        Solicits user input about an experience, feature, or interaction quality.
+        Unlike the other three categories which are purely informational, feedback
+        messages are <strong>interactive</strong> — they expect a response.
+      </p>
+      <ul>
+        <li>Triggered by the system at determined intervals — not tied to a specific user action</li>
+        <li>May appear after specific interaction types (e.g., after a voice agent session)</li>
+        <li>Always dismissible — the user can skip or ignore the prompt</li>
+        <li>Collapses to a confirmation after submission (e.g., &quot;Thanks for your feedback&quot;)</li>
+      </ul>
+      <p className="text-[var(--fluent-fg2)] text-[13px] italic">
+        Examples: &quot;How is Copilot performing?&quot; (1–5 scale), &quot;Rate this voice session&quot;
+      </p>
+
+      <Callout type="note" title="Feedback vs. Toast">
+        <p>
+          Thumbs up/down on individual responses is a <strong>Toast</strong> — it&apos;s a
+          transient micro-interaction confirming the feedback was captured. A Feedback
+          message is different: it&apos;s a <strong>system-initiated prompt</strong> that
+          asks the user to evaluate a broader experience, not a single response.
+        </p>
+      </Callout>
+
       <h3>Decision Tree</h3>
       <p>
         Use this flowchart to classify any new scenario:
@@ -203,7 +250,7 @@ export default function Classification() {
         <p>
           <strong>1. Mutual exclusivity.</strong> Every scenario maps to exactly
           one category. If a scenario seems to fit two, use the more specific one
-          (Confirmation &gt; State Change &gt; Notice).
+          (Confirmation &gt; State Change &gt; Notice &gt; Feedback).
         </p>
         <p>
           <strong>2. Timeline specificity.</strong> If the message is tied to a
@@ -228,7 +275,7 @@ function TaxonomyCard({
   visualType,
   example,
 }: {
-  category: "confirmation" | "state-change" | "notice";
+  category: "confirmation" | "state-change" | "notice" | "feedback";
   color: string;
   question: string;
   description: string;

@@ -35,6 +35,11 @@ export default function ContentGuidelines() {
             tense: <>Past tense for the action, present&nbsp;for&nbsp;the&nbsp;state</>,
             example: <>&quot;<strong>Mona Kane</strong> shared this chat with you&quot;</>,
           },
+          {
+            situation: "Soliciting feedback",
+            tense: "Present tense (question form)",
+            example: <>&quot;How is Copilot performing?&quot;</>,
+          },
         ]}
       />
 

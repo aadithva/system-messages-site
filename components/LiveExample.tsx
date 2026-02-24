@@ -1,5 +1,5 @@
 interface LiveExampleProps {
-  type: "inline-notice" | "divider" | "inline-marker" | "banner" | "banner-warning";
+  type: "inline-notice" | "divider" | "inline-marker" | "banner" | "banner-warning" | "feedback-card";
   label?: string;
 }
 
@@ -45,6 +45,7 @@ export default function LiveExample({ type, label }: LiveExampleProps) {
             {type === "inline-notice" && <InlineNoticeExample />}
             {type === "divider" && <DividerExample />}
             {type === "inline-marker" && <BoundaryMarkerExample />}
+            {type === "feedback-card" && <FeedbackCardExample />}
           </div>
         )}
       </div>
@@ -166,6 +167,68 @@ function BoundaryMarkerExample() {
         >
           Messages beyond this point are only visible to you
         </span>
+      </div>
+    </div>
+  );
+}
+
+function FeedbackCardExample() {
+  return (
+    <div className="py-2">
+      <div
+        className="rounded-lg border px-4 py-3"
+        style={{
+          borderColor: "var(--fluent-stroke2)",
+          backgroundColor: "var(--fluent-bg4)",
+        }}
+      >
+        <div className="flex items-start gap-2.5">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="var(--fluent-fg3)"
+            className="mt-0.5 shrink-0"
+          >
+            <path d="M8 1.5l1.85 3.75L14 5.88l-3 2.93.7 4.12L8 10.88l-3.7 2.05.7-4.12-3-2.93 4.15-.63L8 1.5z" />
+          </svg>
+          <div className="flex-1 min-w-0">
+            <span
+              className="text-[13px] font-semibold block mb-2"
+              style={{ color: "var(--fluent-fg1)" }}
+            >
+              How is Copilot performing?
+            </span>
+            <div className="flex items-center gap-1.5">
+              {[1, 2, 3, 4, 5].map((n) => (
+                <button
+                  key={n}
+                  className="w-8 h-8 rounded-md border text-[13px] font-medium transition-colors"
+                  style={{
+                    borderColor: "var(--fluent-stroke2)",
+                    color: "var(--fluent-fg2)",
+                    backgroundColor: "white",
+                  }}
+                >
+                  {n}
+                </button>
+              ))}
+            </div>
+            <div className="flex items-center justify-between mt-1.5">
+              <span className="text-[11px]" style={{ color: "var(--fluent-fg4)" }}>
+                Not helpful
+              </span>
+              <span className="text-[11px]" style={{ color: "var(--fluent-fg4)" }}>
+                Very helpful
+              </span>
+            </div>
+          </div>
+          <button className="text-[var(--fluent-fg4)] hover:text-[var(--fluent-fg1)] transition-colors shrink-0 mt-0.5">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+              <path d="M3.17 3.17a.5.5 0 01.7 0L6 5.3l2.13-2.13a.5.5 0 01.7.7L6.7 6l2.13 2.13a.5.5 0 01-.7.7L6 6.7 3.87 8.83a.5.5 0 01-.7-.7L5.3 6 3.17 3.87a.5.5 0 010-.7z" />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   );

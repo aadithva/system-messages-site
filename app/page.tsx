@@ -24,15 +24,15 @@ export default function Home() {
             </h1>
             <p className="text-[15px] text-[var(--fluent-fg2)] leading-relaxed">
               A classification framework for non-conversational messages in the
-              Microsoft Copilot chat surface. Covers 4 categories, 4 visual types,
-              content guidelines, behavior rules, and 14 scenario mappings.
+              Microsoft Copilot chat surface. Covers 4 categories, 5 visual types,
+              content guidelines, behavior rules, and 16 scenario mappings.
             </p>
             <div className="flex items-center gap-4 mt-4 text-xs text-[var(--fluent-fg4)]">
               <span>Article</span>
               <span className="w-1 h-1 rounded-full bg-[var(--fluent-fg4)]" />
               <span>02/23/2026</span>
               <span className="w-1 h-1 rounded-full bg-[var(--fluent-fg4)]" />
-              <span>14 scenarios mapped</span>
+              <span>16 scenarios mapped</span>
             </div>
           </div>
 

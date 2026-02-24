@@ -17,6 +17,7 @@ const navItems: NavItem[] = [
       { id: "confirmation", label: "Confirmation" },
       { id: "state-change", label: "State Change" },
       { id: "notice", label: "Notice" },
+      { id: "feedback", label: "Feedback" },
     ],
   },
   {
@@ -27,6 +28,7 @@ const navItems: NavItem[] = [
       { id: "divider", label: "Divider" },
       { id: "banner", label: "Banner" },
       { id: "inline-marker", label: "Inline Notice" },
+      { id: "feedback-card", label: "Feedback Card" },
     ],
   },
   { id: "content-guidelines", label: "Content Guidelines" },

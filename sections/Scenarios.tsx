@@ -239,6 +239,28 @@ export default function Scenarios() {
         changeLevel="Minimal"
         isFuture
       />
+
+      <ScenarioCard
+        number={15}
+        title="System-Initiated Feedback Prompt"
+        scenario="The system periodically asks the user to rate their experience with Copilot, or solicits feedback after a specific interaction type (e.g., after a voice agent session ends)."
+        category="feedback"
+        visualType="Feedback Card"
+        recommendedTreatment={'Star icon. Question text: "How is Copilot performing?" with a 1–5 numeric scale. Scale labels: "Not helpful" / "Very helpful". Dismiss button (X) in top-right. After submission, collapse to Inline Notice: "Thanks for your feedback".'}
+        changeLevel="Major"
+        isFuture
+      />
+
+      <ScenarioCard
+        number={16}
+        title="Post-Session Feedback"
+        scenario="After a voice chat or screen sharing session ends, the system asks the user to rate the session experience."
+        category="feedback"
+        visualType="Feedback Card"
+        recommendedTreatment={'Star icon. Question text: "How was this voice session?" with a 1–5 numeric scale. Appears immediately after the session lifecycle divider. Dismiss button (X). After submission, collapse to Inline Notice: "Thanks for your feedback".'}
+        changeLevel="Major"
+        isFuture
+      />
     </section>
   );
 }

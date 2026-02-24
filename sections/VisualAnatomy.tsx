@@ -9,7 +9,7 @@ export default function VisualAnatomy() {
       <h2>Visual Anatomy</h2>
 
       <p>
-        Each of the three system message categories maps to one or more visual types.
+        Each of the four system message categories maps to one or more visual types.
         Below are the component specifications, token references, and live rendered examples.
       </p>
 
@@ -236,6 +236,74 @@ export default function VisualAnatomy() {
         </p>
         <p>
           Container: No background. Whitespace + optional divider for separation. Spacing: 16px above and below.
+        </p>
+      </Callout>
+
+      {/* Feedback Card */}
+      <h3 id="feedback-card">Feedback Card <span className="text-sm font-normal text-[var(--fluent-fg4)]">— Feedback</span></h3>
+      <p>
+        Used to solicit user input about an experience or interaction. The only interactive
+        system message type — it contains response controls (rating scale, buttons) and
+        expects user action.
+      </p>
+
+      <LiveExample type="feedback-card" label="Live Example" />
+
+      <SpecTable
+        columns={[
+          { header: "Element", key: "element", width: "20%" },
+          { header: "Required", key: "required", width: "15%" },
+          { header: "Description", key: "description" },
+        ]}
+        rows={[
+          {
+            element: "Container",
+            required: "Yes",
+            description: "Rounded card with subtle background and border. Visually distinct from chat bubbles.",
+          },
+          {
+            element: "Icon",
+            required: "Yes",
+            description: "16px icon indicating the feedback type (e.g., star for rating). Positioned top-left.",
+          },
+          {
+            element: "Question text",
+            required: "Yes",
+            description: "Short, direct question about the experience. Semibold weight to distinguish from body text.",
+          },
+          {
+            element: "Rating controls",
+            required: "Yes",
+            description: "Interactive input — numbered scale (1–5), star rating, or thumbs up/down. Must be clearly tappable.",
+          },
+          {
+            element: "Scale labels",
+            required: "Optional",
+            description: "Anchor labels at each end of the scale (e.g., \"Not helpful\" / \"Very helpful\").",
+          },
+          {
+            element: "Dismiss button",
+            required: "Yes",
+            description: "\"X\" button to dismiss the card without responding. Feedback is always optional.",
+          },
+        ]}
+      />
+
+      <Callout type="tip" title="Token Reference">
+        <p>
+          Question text: <TokenBadge token="colorNeutralForeground1" value="#242424" /> Body 2 / semibold
+        </p>
+        <p>
+          Scale labels: <TokenBadge token="colorNeutralForeground4" value="#707070" /> Caption 1 / regular
+        </p>
+        <p>
+          Icon: <TokenBadge token="colorNeutralForeground3" value="#616161" /> 16px
+        </p>
+        <p>
+          Container: <TokenBadge token="colorNeutralBackground4" value="#f5f5f5" /> with 1px <TokenBadge token="colorNeutralStroke2" value="#e0e0e0" /> border. Border-radius: 8px. Padding: 12px 16px.
+        </p>
+        <p>
+          Rating buttons: 32×32px, 1px border <TokenBadge token="colorNeutralStroke2" value="#e0e0e0" />, white fill. On hover: <TokenBadge token="colorNeutralBackground4" value="#f5f5f5" />.
         </p>
       </Callout>
     </section>

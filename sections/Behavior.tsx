@@ -35,6 +35,11 @@ export default function Behavior() {
             persistence: "Dismissible (optional)",
             rationale: "The access condition persists, but the user may not need the reminder after first read. If dismissed, it should be accessible via a \"chat info\" affordance.",
           },
+          {
+            type: <strong>Feedback Card</strong>,
+            persistence: "Dismissible",
+            rationale: "Feedback is always optional. The card is dismissed after submission or when the user closes it. After submission, collapses to a brief confirmation.",
+          },
         ]}
       />
 
@@ -44,6 +49,7 @@ export default function Behavior() {
         <li><strong>State Change:</strong> Appears immediately when the session or mode ends (or begins).</li>
         <li><strong>Notice (conversation-wide):</strong> Appears when the chat is opened, before any messages are scrolled into view.</li>
         <li><strong>Notice (point-specific):</strong> Appears at the exact point in the timeline where the boundary takes effect.</li>
+        <li><strong>Feedback:</strong> Appears at system-determined intervals, or immediately after a specific interaction type ends (e.g., voice session).</li>
       </ul>
 
       <h3>Scroll behavior</h3>
@@ -55,7 +61,7 @@ export default function Behavior() {
         ]}
         rows={[
           {
-            type: <strong>Inline Notice, Divider, Inline Notice</strong>,
+            type: <strong>Inline Notice, Divider, Inline Notice, Feedback Card</strong>,
             behavior: "Scroll with the chat content. They are part of the timeline.",
           },
           {
@@ -111,6 +117,12 @@ export default function Behavior() {
             persists: "Dismissible",
             scrolls: "No (pinned to top)",
             animated: "Fade-out on dismiss (200ms ease-out)",
+          },
+          {
+            type: "Feedback Card",
+            persists: "Dismissible",
+            scrolls: "Yes (in timeline)",
+            animated: "Collapse on submit (200ms ease-out)",
           },
         ]}
       />

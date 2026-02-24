@@ -8,7 +8,7 @@ export default function Validation() {
       <h2>Validation</h2>
 
       <p>
-        The framework was validated against all 14 scenarios (7 audited + 7 future)
+        The framework was validated against all 16 scenarios (7 audited + 9 future)
         to ensure consistency, completeness, and mutual exclusivity.
       </p>
 
@@ -37,6 +37,10 @@ export default function Validation() {
             scenarios: "#6 Shared Chat, #7 Visibility Boundary, Admin-Restricted Topic, Context Window Limit",
           },
           {
+            category: <CategoryBadge category="feedback" />,
+            scenarios: "System-Initiated Feedback Prompt, Post-Session Feedback",
+          },
+          {
             category: <CategoryBadge category="not-system-message" />,
             scenarios: "#2 Suggestions Bypassed (UI State Collapse)",
           },
@@ -60,6 +64,7 @@ export default function Validation() {
         <li><strong>Divider</strong> — always marks a structural break</li>
         <li><strong>Banner</strong> — always communicates conversation-wide access conditions</li>
         <li><strong>Inline Notice</strong> — always establishes a point-specific visibility/interaction change</li>
+        <li><strong>Feedback Card</strong> — always solicits user input about an experience</li>
       </ul>
       <Callout type="note" title="Notice: two visual expressions">
         <p>
@@ -67,6 +72,14 @@ export default function Validation() {
           conditions (pinned to top), while Inline Notice handles point-specific visibility changes
           (in the timeline). Both communicate access/visibility information — the scope determines
           which visual expression is used.
+        </p>
+      </Callout>
+
+      <Callout type="note" title="Feedback Card: the only interactive system message">
+        <p>
+          Feedback Card is the only visual type that expects user input. All other system
+          messages are informational — they tell the user something. Feedback Cards ask the
+          user something. This makes them uniquely dismissible and collapsible after interaction.
         </p>
       </Callout>
 
@@ -92,7 +105,7 @@ export default function Validation() {
           },
           {
             check: "Coverage",
-            result: <span className="text-[#107c10] font-semibold">14/14 scenarios classified across 3 categories without needing new ones</span>,
+            result: <span className="text-[#107c10] font-semibold">16/16 scenarios classified across 4 categories</span>,
           },
         ]}
       />

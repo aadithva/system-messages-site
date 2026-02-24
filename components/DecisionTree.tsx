@@ -39,6 +39,13 @@ export default function DecisionTree() {
       highlight: true,
       color: "#0078d4",
     },
+    {
+      question: "Does it solicit user feedback about an experience or interaction?",
+      yes: "Feedback",
+      yesType: "Feedback Card",
+      highlight: true,
+      color: "#ca5010",
+    },
   ];
 
   return (
