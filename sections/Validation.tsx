@@ -25,7 +25,7 @@ export default function Validation() {
         ]}
         rows={[
           {
-            category: <CategoryBadge category="action-acknowledgment" />,
+            category: <CategoryBadge category="action-feedback" />,
             scenarios: "#1 Save as Agent, #4 Stopped Copilot, #5 Regenerated, Plugin Installed, File Upload, Chat Exported",
           },
           {
@@ -33,12 +33,8 @@ export default function Validation() {
             scenarios: "#3 Screen/Voice Ended, Conversation Transferred, Date Boundary",
           },
           {
-            category: <CategoryBadge category="context-boundary" />,
-            scenarios: "#7 Visibility Boundary, Context Window Limit",
-          },
-          {
             category: <CategoryBadge category="access-notice" />,
-            scenarios: "#6 Shared Chat, Admin-Restricted Topic",
+            scenarios: "#6 Shared Chat, #7 Visibility Boundary, Admin-Restricted Topic, Context Window Limit",
           },
           {
             category: <CategoryBadge category="not-system-message" />,
@@ -62,9 +58,17 @@ export default function Validation() {
       <ul>
         <li><strong>Inline Notice</strong> — always confirms a completed action</li>
         <li><strong>Divider</strong> — always marks a structural break</li>
-        <li><strong>Boundary Marker</strong> — always establishes a visibility/interaction change</li>
         <li><strong>Banner</strong> — always communicates conversation-wide access conditions</li>
+        <li><strong>Inline Notice</strong> — always establishes a point-specific visibility/interaction change</li>
       </ul>
+      <Callout type="note" title="Access Notice: two visual expressions">
+        <p>
+          Access Notice is the only category with two visual types. Banner handles conversation-wide
+          conditions (pinned to top), while Inline Notice handles point-specific visibility changes
+          (in the timeline). Both communicate access/visibility information — the scope determines
+          which visual expression is used.
+        </p>
+      </Callout>
 
       <h3>Coverage metrics</h3>
 
@@ -84,11 +88,11 @@ export default function Validation() {
           },
           {
             check: "Visual type purity",
-            result: <span className="text-[#107c10] font-semibold">Each type serves one purpose only</span>,
+            result: <span className="text-[#107c10] font-semibold">Each type serves one purpose; Access Notice uses two visual expressions (Banner + Inline Notice)</span>,
           },
           {
             check: "Coverage",
-            result: <span className="text-[#107c10] font-semibold">14/14 scenarios classified without needing new categories</span>,
+            result: <span className="text-[#107c10] font-semibold">14/14 scenarios classified across 3 categories without needing new ones</span>,
           },
         ]}
       />

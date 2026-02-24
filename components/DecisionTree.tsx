@@ -20,7 +20,7 @@ export default function DecisionTree() {
     },
     {
       question: "Does it confirm that a discrete action completed?",
-      yes: "Action Acknowledgment",
+      yes: "Action Feedback",
       yesType: "Inline Notice",
       highlight: true,
       color: "#464FEB",
@@ -33,16 +33,9 @@ export default function DecisionTree() {
       color: "#107c10",
     },
     {
-      question: "Does it establish a change in visibility or interaction rules at a specific point?",
-      yes: "Context Boundary",
-      yesType: "Boundary Marker",
-      highlight: true,
-      color: "#d83b01",
-    },
-    {
-      question: "Does it communicate ownership, permissions, or access conditions for the whole conversation?",
+      question: "Does it communicate ownership, permissions, visibility changes, or access conditions?",
       yes: "Access Notice",
-      yesType: "Banner",
+      yesType: "Banner or Inline Notice",
       highlight: true,
       color: "#0078d4",
     },

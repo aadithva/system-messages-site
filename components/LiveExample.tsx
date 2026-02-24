@@ -1,5 +1,5 @@
 interface LiveExampleProps {
-  type: "inline-notice" | "divider" | "boundary-marker" | "banner" | "banner-warning";
+  type: "inline-notice" | "divider" | "inline-marker" | "banner" | "banner-warning";
   label?: string;
 }
 
@@ -15,6 +15,17 @@ export default function LiveExample({ type, label }: LiveExampleProps) {
         className="rounded-lg border border-[var(--learn-border)] bg-white overflow-hidden"
         style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.06)" }}
       >
+        {/* Banner system messages render above the chat */}
+        {(type === "banner" || type === "banner-warning") && (
+          <div className="px-6 py-3 border-b border-dashed border-[var(--learn-border)] bg-[#fafafa]">
+            <div className="text-[10px] font-semibold uppercase tracking-widest text-[var(--fluent-fg4)] mb-2">
+              System Message
+            </div>
+            {type === "banner" && <BannerExample variant="info" />}
+            {type === "banner-warning" && <BannerExample variant="warning" />}
+          </div>
+        )}
+
         {/* Mock chat context */}
         <div className="px-6 pt-5 pb-2">
           <ChatBubble side="right" text="Save this as an agent called Research Assistant" />
@@ -25,17 +36,17 @@ export default function LiveExample({ type, label }: LiveExampleProps) {
           />
         </div>
 
-        {/* The system message example */}
-        <div className="px-6 py-3 border-t border-dashed border-[var(--learn-border)] bg-[#fafafa]">
-          <div className="text-[10px] font-semibold uppercase tracking-widest text-[var(--fluent-fg4)] mb-2">
-            System Message
+        {/* Non-banner system messages render below the chat */}
+        {type !== "banner" && type !== "banner-warning" && (
+          <div className="px-6 py-3 border-t border-dashed border-[var(--learn-border)] bg-[#fafafa]">
+            <div className="text-[10px] font-semibold uppercase tracking-widest text-[var(--fluent-fg4)] mb-2">
+              System Message
+            </div>
+            {type === "inline-notice" && <InlineNoticeExample />}
+            {type === "divider" && <DividerExample />}
+            {type === "inline-marker" && <BoundaryMarkerExample />}
           </div>
-          {type === "inline-notice" && <InlineNoticeExample />}
-          {type === "divider" && <DividerExample />}
-          {type === "boundary-marker" && <BoundaryMarkerExample />}
-          {type === "banner" && <BannerExample variant="info" />}
-          {type === "banner-warning" && <BannerExample variant="warning" />}
-        </div>
+        )}
       </div>
     </div>
   );

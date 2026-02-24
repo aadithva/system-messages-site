@@ -24,7 +24,7 @@ export default function Scenarios() {
         scenario="User saves a Copilot response as a reusable agent. The system confirms the action."
         currentTreatment="Rendered as a Copilot chat response (with avatar and chat bubble)."
         problem={'This is not Copilot speaking — it\u2019s a system confirmation of an action. Rendering it as a Copilot response implies Copilot is "telling" the user what happened.'}
-        category="action-acknowledgment"
+        category="action-feedback"
         visualType="Inline Notice"
         recommendedTreatment={'Left-aligned inline notice with a checkmark icon. Text: Saved as [Agent Name]. Optional action link: "View agent" or "Undo". No avatar, no chat bubble, no Copilot attribution.'}
         changeLevel="Major"
@@ -60,7 +60,7 @@ export default function Scenarios() {
         scenario={'User clicks "Stop responding" while Copilot is generating. The system acknowledges the interruption.'}
         currentTreatment={'Inline message with a stop icon and "Give feedback" link.'}
         problem="Treatment is reasonable but inconsistent with other action acknowledgments."
-        category="action-acknowledgment"
+        category="action-feedback"
         visualType="Inline Notice"
         recommendedTreatment={'Left-aligned inline notice with stop-circle icon. Text: Stopped responding. Optional action link: "Give feedback". Follows the standard Inline Notice anatomy.'}
         changeLevel="Minor"
@@ -72,7 +72,7 @@ export default function Scenarios() {
         scenario="User regenerates a response and the system switches to a different model. The system indicates which model was used."
         currentTreatment="Inline message with a sparkle/refresh icon and bold model name."
         problem="Similar to #4 but uses a different icon and slightly different styling. The two should be visually consistent."
-        category="action-acknowledgment"
+        category="action-feedback"
         visualType="Inline Notice"
         recommendedTreatment="Left-aligned inline notice with a refresh icon. Text: Regenerated with GPT-4. No action link needed. Follows the same Inline Notice spec as #4."
         changeLevel="Minor"
@@ -96,8 +96,8 @@ export default function Scenarios() {
         scenario="At a specific point in the chat, the visibility rules change (e.g., messages below are only visible to the current user)."
         currentTreatment="Left-aligned message with a lock icon."
         problem="The pattern is effective but not formalized. No documented spec for boundary markers."
-        category="context-boundary"
-        visualType="Boundary Marker"
+        category="access-notice"
+        visualType="Inline Notice"
         recommendedTreatment="Left-aligned lock icon with text: Messages beyond this point are only visible to you. Optional subtle divider line. Uses Caption 1 typography in colorNeutralForeground3."
         changeLevel="Minimal"
       />
@@ -152,7 +152,7 @@ export default function Scenarios() {
             num: "7",
             scenario: "Visibility Boundary",
             level: <span className="text-[#107c10] font-semibold">Minor</span>,
-            action: "Formalize Boundary Marker pattern",
+            action: "Formalize Inline Notice pattern (Access Notice)",
           },
         ]}
       />
@@ -167,7 +167,7 @@ export default function Scenarios() {
         number={8}
         title="Plugin / Extension Installed"
         scenario={"A plugin or extension is activated mid-conversation, expanding Copilot\u2019s capabilities."}
-        category="action-acknowledgment"
+        category="action-feedback"
         visualType="Inline Notice"
         recommendedTreatment="Puzzle-piece icon. Text: [Plugin Name] is now active."
         changeLevel="Minor"
@@ -178,8 +178,8 @@ export default function Scenarios() {
         number={9}
         title="Context Window Limit Reached"
         scenario="The conversation has exceeded the context window. Older messages are no longer available to Copilot."
-        category="context-boundary"
-        visualType="Boundary Marker"
+        category="access-notice"
+        visualType="Inline Notice"
         recommendedTreatment="Info-circle icon. Text: Earlier messages in this chat are no longer in context. Optional divider line."
         changeLevel="Minor"
         isFuture
@@ -189,7 +189,7 @@ export default function Scenarios() {
         number={10}
         title="File Upload Completed"
         scenario={"User uploads a file and the system confirms it\u2019s been processed."}
-        category="action-acknowledgment"
+        category="action-feedback"
         visualType="Inline Notice"
         recommendedTreatment="Attach icon. Text: quarterly-report.xlsx uploaded."
         changeLevel="Minor"
@@ -222,7 +222,7 @@ export default function Scenarios() {
         number={13}
         title="Chat Exported"
         scenario="User exports the chat to a file or external system."
-        category="action-acknowledgment"
+        category="action-feedback"
         visualType="Inline Notice"
         recommendedTreatment={'Download icon. Text: Chat exported. Optional action link: "Open file".'}
         changeLevel="Minor"

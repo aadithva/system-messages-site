@@ -26,7 +26,7 @@ export default function Behavior() {
             rationale: "Structural marker. The session boundary is a fact; it doesn't expire.",
           },
           {
-            type: <strong>Boundary Marker</strong>,
+            type: <strong>Inline Notice</strong>,
             persistence: "Permanent",
             rationale: "The boundary condition is ongoing. Removing it would obscure the visibility change.",
           },
@@ -40,10 +40,10 @@ export default function Behavior() {
 
       <h3>Timing</h3>
       <ul>
-        <li><strong>Action Acknowledgment:</strong> Appears immediately after the action completes, at the point in the timeline where the action occurred.</li>
+        <li><strong>Action Feedback:</strong> Appears immediately after the action completes, at the point in the timeline where the action occurred.</li>
         <li><strong>Session Lifecycle:</strong> Appears immediately when the session or mode ends (or begins).</li>
-        <li><strong>Context Boundary:</strong> Appears at the exact point in the timeline where the boundary takes effect.</li>
-        <li><strong>Access Notice:</strong> Appears when the chat is opened, before any messages are scrolled into view.</li>
+        <li><strong>Access Notice (conversation-wide):</strong> Appears when the chat is opened, before any messages are scrolled into view.</li>
+        <li><strong>Access Notice (point-specific):</strong> Appears at the exact point in the timeline where the boundary takes effect.</li>
       </ul>
 
       <h3>Scroll behavior</h3>
@@ -55,7 +55,7 @@ export default function Behavior() {
         ]}
         rows={[
           {
-            type: <strong>Inline Notice, Divider, Boundary Marker</strong>,
+            type: <strong>Inline Notice, Divider, Inline Notice</strong>,
             behavior: "Scroll with the chat content. They are part of the timeline.",
           },
           {
@@ -101,7 +101,7 @@ export default function Behavior() {
             animated: "No",
           },
           {
-            type: "Boundary Marker",
+            type: "Inline Notice",
             persists: "Permanent",
             scrolls: "Yes (in timeline)",
             animated: "No",

@@ -14,9 +14,8 @@ const navItems: NavItem[] = [
     id: "classification",
     label: "Classification",
     children: [
-      { id: "action-acknowledgment", label: "Action Acknowledgment" },
+      { id: "action-feedback", label: "Action Feedback" },
       { id: "session-lifecycle", label: "Session Lifecycle" },
-      { id: "context-boundary", label: "Context Boundary" },
       { id: "access-notice", label: "Access Notice" },
     ],
   },
@@ -26,8 +25,8 @@ const navItems: NavItem[] = [
     children: [
       { id: "inline-notice", label: "Inline Notice" },
       { id: "divider", label: "Divider" },
-      { id: "boundary-marker", label: "Boundary Marker" },
       { id: "banner", label: "Banner" },
+      { id: "inline-marker", label: "Inline Notice" },
     ],
   },
   { id: "content-guidelines", label: "Content Guidelines" },

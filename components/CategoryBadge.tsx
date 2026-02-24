@@ -1,16 +1,14 @@
 interface CategoryBadgeProps {
   category:
-    | "action-acknowledgment"
+    | "action-feedback"
     | "session-lifecycle"
-    | "context-boundary"
     | "access-notice"
     | "not-system-message";
 }
 
 const config = {
-  "action-acknowledgment": { label: "Action Acknowledgment", bg: "#e8ebfa", color: "#464FEB" },
+  "action-feedback": { label: "Action Feedback", bg: "#e8ebfa", color: "#464FEB" },
   "session-lifecycle": { label: "Session Lifecycle", bg: "#e1f5e4", color: "#107c10" },
-  "context-boundary": { label: "Context Boundary", bg: "#fff0e0", color: "#d83b01" },
   "access-notice": { label: "Access Notice", bg: "#f0f6ff", color: "#0078d4" },
   "not-system-message": { label: "Not a System Message", bg: "#f3f2f1", color: "#707070" },
 };

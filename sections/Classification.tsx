@@ -9,47 +9,66 @@ export default function Classification() {
       <h2>Classification Taxonomy</h2>
 
       <p>
-        Every system message falls into exactly one of four categories:
+        Every system message falls into exactly one of three categories. Each category
+        maps to one or more visual types and answers a different question:
       </p>
 
-      <SpecTable
-        columns={[
-          { header: "Category", key: "category", width: "20%" },
-          { header: "Purpose", key: "purpose", width: "25%" },
-          { header: "Visual Type", key: "visual" },
-          { header: "Trigger", key: "trigger" },
-        ]}
-        rows={[
-          {
-            category: <CategoryBadge category="action-acknowledgment" />,
-            purpose: "Confirms that a user-initiated or system-performed action has completed",
-            visual: "Inline Notice",
-            trigger: "A discrete action finishes (save, stop, regenerate, switch)",
-          },
-          {
-            category: <CategoryBadge category="session-lifecycle" />,
-            purpose: "Marks the beginning or end of a mode, session, or temporal boundary",
-            visual: "Divider",
-            trigger: "A mode ends, a session closes, a date changes",
-          },
-          {
-            category: <CategoryBadge category="context-boundary" />,
-            purpose: "Establishes a change in who can see or interact with messages from this point forward",
-            visual: "Boundary Marker",
-            trigger: "Visibility or interaction rules change at a specific point in the timeline",
-          },
-          {
-            category: <CategoryBadge category="access-notice" />,
-            purpose: "Informs the user about chat ownership, permissions, or access caveats that apply to the entire conversation",
-            visual: "Banner",
-            trigger: "The user enters a chat with special access conditions",
-          },
-        ]}
-      />
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+        <TaxonomyCard
+          category="action-feedback"
+          color="#464FEB"
+          question="What just happened?"
+          description="Something the user or system did has completed. The message is a receipt."
+          visualType="Inline Notice"
+          example={
+            <div className="flex items-center gap-2">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="#616161">
+                <path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z" />
+              </svg>
+              <span className="text-[13px] text-[var(--fluent-fg2)]">
+                Saved as <strong className="text-[var(--fluent-fg1)]">Research Assistant</strong>
+              </span>
+            </div>
+          }
+        />
+        <TaxonomyCard
+          category="session-lifecycle"
+          color="#107c10"
+          question="What just started or ended?"
+          description="A mode, session, or time period has transitioned. The divider separates before from after."
+          visualType="Divider"
+          example={
+            <div className="flex items-center gap-2">
+              <div className="flex-1 h-px bg-[var(--fluent-stroke2)]" />
+              <span className="text-[11px] text-[var(--fluent-fg4)] px-1">Screen sharing ended</span>
+              <div className="flex-1 h-px bg-[var(--fluent-stroke2)]" />
+            </div>
+          }
+        />
+        <TaxonomyCard
+          category="access-notice"
+          color="#0078d4"
+          question="What should I know about visibility or access?"
+          description="A condition about ownership, permissions, visibility, or access — either conversation-wide (Banner) or at a specific point (Inline Notice)."
+          visualType="Banner / Inline Notice"
+          example={
+            <div className="flex items-center gap-2 bg-[var(--fluent-bg4)] rounded px-2.5 py-1.5 -mx-1">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="#616161">
+                <path d="M8 1a7 7 0 100 14A7 7 0 008 1zm0 3a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5A.75.75 0 018 4zm0 8a.75.75 0 100-1.5.75.75 0 000 1.5z" />
+              </svg>
+              <span className="text-[12px] text-[var(--fluent-fg1)]">
+                <strong>Mona Kane</strong> shared this chat with you
+              </span>
+            </div>
+          }
+        />
+      </div>
 
-      <h3 id="action-acknowledgment">Action Acknowledgment</h3>
+      <h3 id="action-feedback">Action Feedback</h3>
       <p>
         Communicates that something happened. The action is complete; the message is a receipt.
+        Specifically, Action Feedbacks are for <strong>state-changing actions</strong> — actions
+        that alter the conversation, create something new, or change how the system behaves.
       </p>
       <ul>
         <li>Always appears at the point in the timeline where the action occurred</li>
@@ -59,6 +78,91 @@ export default function Classification() {
       <p className="text-[var(--fluent-fg2)] text-[13px] italic">
         Examples: &quot;Saved as agent,&quot; &quot;Stopped responding,&quot; &quot;Regenerated with GPT-4&quot;
       </p>
+
+      <h4>What qualifies as an Action Feedback?</h4>
+      <p>
+        The test is <strong>timeline significance</strong>: if you returned to this conversation
+        tomorrow, would you need to know this action happened?
+      </p>
+
+      <SpecTable
+        columns={[
+          { header: "Action", key: "action", width: "30%" },
+          { header: "Timeline impact?", key: "impact", width: "25%" },
+          { header: "Pattern", key: "pattern" },
+        ]}
+        rows={[
+          {
+            action: "Save as agent",
+            impact: <strong className="text-[#107c10]">Yes</strong>,
+            pattern: <><strong>Action Feedback</strong> — a new entity was created</>,
+          },
+          {
+            action: "Stop responding",
+            impact: <strong className="text-[#107c10]">Yes</strong>,
+            pattern: <><strong>Action Feedback</strong> — the conversation flow was altered</>,
+          },
+          {
+            action: "Regenerate with GPT-4",
+            impact: <strong className="text-[#107c10]">Yes</strong>,
+            pattern: <><strong>Action Feedback</strong> — the response below uses a different model</>,
+          },
+          {
+            action: "Copy response",
+            impact: <span className="text-[var(--fluent-fg4)]">No</span>,
+            pattern: <><strong>Toast</strong> — clipboard is transient, nothing in the chat changed</>,
+          },
+          {
+            action: "Share response",
+            impact: <span className="text-[var(--fluent-fg4)]">No</span>,
+            pattern: <><strong>Toast</strong> — sharing happens outside the chat</>,
+          },
+          {
+            action: "Thumbs up / down",
+            impact: <span className="text-[var(--fluent-fg4)]">No</span>,
+            pattern: <><strong>Toast</strong> — feedback is captured elsewhere</>,
+          },
+        ]}
+      />
+
+      <Callout type="note" title="Action Feedback vs. Toast">
+        <p>
+          Both confirm a completed action, but they differ in <strong>scope</strong>.
+          Action Feedbacks confirm <strong>system/operational actions</strong> that
+          change state (save, stop, regenerate, export). Toasts confirm <strong>transient
+          micro-interactions</strong> with no lasting impact (copy, share, like). Toasts
+          live outside the timeline as ephemeral overlays. Action Feedbacks live
+          inside the timeline as permanent records.
+        </p>
+      </Callout>
+
+      <h4>Action Feedback vs. Chat Output</h4>
+      <p>
+        Not every action in the chat is a system message. If Copilot is <strong>performing
+        work and showing you the result</strong> as part of conversation, that&apos;s a Chat
+        Output — not a system message.
+      </p>
+
+      <SpecTable
+        columns={[
+          { header: "System message (Action Feedback)", key: "system" },
+          { header: "NOT a system message (Chat Output)", key: "chat" },
+        ]}
+        rows={[
+          {
+            system: <>Saved as <strong>Research Assistant</strong></>,
+            chat: <>&quot;Here&apos;s your research summary...&quot;</>,
+          },
+          {
+            system: "Stopped responding",
+            chat: "Copilot generating a document",
+          },
+          {
+            system: <>Regenerated with <strong>GPT-4</strong></>,
+            chat: "Copilot editing a slide",
+          },
+        ]}
+      />
 
       <h3 id="session-lifecycle">Session Lifecycle</h3>
       <p>
@@ -74,34 +178,17 @@ export default function Classification() {
         Examples: &quot;Screen sharing ended,&quot; &quot;Voice chat ended,&quot; &quot;February 23, 2026&quot;
       </p>
 
-      <h3 id="context-boundary">Context Boundary</h3>
-      <p>
-        Tells the user that the rules of visibility or interaction have changed at
-        this specific point. Messages above the boundary have different visibility
-        than messages below.
-      </p>
-      <ul>
-        <li>Always includes a directional reference (&quot;beyond this point,&quot; &quot;from here&quot;)</li>
-        <li>Anchored to a specific location in the timeline</li>
-        <li>Persistent — never dismissible, because the boundary condition is permanent</li>
-      </ul>
-      <p className="text-[var(--fluent-fg2)] text-[13px] italic">
-        Examples: &quot;Messages beyond this point are only visible to you&quot;
-      </p>
-
       <h3 id="access-notice">Access Notice</h3>
       <p>
-        Communicates a condition that applies to the entire conversation, not a
-        specific point in the timeline. Typically relates to who owns the chat, how
-        it was shared, or what permissions apply.
+        Communicates a condition about ownership, permissions, visibility, or access.
+        Access Notices come in two forms depending on scope:
       </p>
       <ul>
-        <li>Appears at the top of the chat surface, above all messages</li>
-        <li>May be dismissible if the information is non-critical after first read</li>
-        <li>Applies globally, not to a specific message</li>
+        <li><strong>Conversation-wide</strong> (Banner): Applies to the entire conversation. Appears at the top of the chat surface, above all messages. May be dismissible if non-critical after first read.</li>
+        <li><strong>Point-specific</strong> (Inline Notice): Marks a specific point in the timeline where visibility or interaction rules change. Always includes a directional reference (&quot;beyond this point,&quot; &quot;from here&quot;). Persistent — never dismissible, because the boundary condition is permanent.</li>
       </ul>
       <p className="text-[var(--fluent-fg2)] text-[13px] italic">
-        Examples: &quot;Mona Kane shared this chat with you,&quot; &quot;This chat is read-only&quot;
+        Examples: &quot;Mona Kane shared this chat with you,&quot; &quot;This chat is read-only,&quot; &quot;Messages beyond this point are only visible to you&quot;
       </p>
 
       <h3>Decision Tree</h3>
@@ -116,7 +203,7 @@ export default function Classification() {
         <p>
           <strong>1. Mutual exclusivity.</strong> Every scenario maps to exactly
           one category. If a scenario seems to fit two, use the more specific one
-          (Action Acknowledgment &gt; Session Lifecycle &gt; Context Boundary &gt; Access Notice).
+          (Action Feedback &gt; Session Lifecycle &gt; Access Notice).
         </p>
         <p>
           <strong>2. Timeline specificity.</strong> If the message is tied to a
@@ -125,11 +212,56 @@ export default function Classification() {
         </p>
         <p>
           <strong>3. Action vs. state.</strong> If something &quot;happened&quot;
-          (verb, past tense), it&apos;s likely an Action Acknowledgment. If something
-          &quot;is&quot; (state, present tense), it&apos;s likely a Context Boundary or
-          Access Notice.
+          (verb, past tense), it&apos;s likely an Action Feedback. If something
+          &quot;is&quot; (state, present tense), it&apos;s likely an Access Notice.
         </p>
       </Callout>
     </section>
+  );
+}
+
+function TaxonomyCard({
+  category,
+  color,
+  question,
+  description,
+  visualType,
+  example,
+}: {
+  category: "action-feedback" | "session-lifecycle" | "access-notice";
+  color: string;
+  question: string;
+  description: string;
+  visualType: string;
+  example: React.ReactNode;
+}) {
+  return (
+    <div
+      className="rounded-lg border border-[var(--learn-border)] overflow-hidden"
+      style={{ boxShadow: "0 1px 2px rgba(0,0,0,0.04)" }}
+    >
+      {/* Header */}
+      <div className="px-4 py-3 flex items-center justify-between" style={{ borderBottom: `2px solid ${color}` }}>
+        <CategoryBadge category={category} />
+        <span className="text-[11px] font-medium text-[var(--fluent-fg4)] bg-[var(--fluent-bg4)] px-2 py-0.5 rounded">
+          {visualType}
+        </span>
+      </div>
+
+      {/* Body */}
+      <div className="px-4 py-3">
+        <p className="text-[14px] font-semibold text-[var(--fluent-fg1)] m-0 mb-1">
+          {question}
+        </p>
+        <p className="text-[13px] leading-[19px] text-[var(--fluent-fg2)] m-0 mb-3">
+          {description}
+        </p>
+
+        {/* Live mini example */}
+        <div className="rounded-md border border-dashed border-[var(--learn-border)] bg-[#fafafa] px-3 py-2.5">
+          {example}
+        </div>
+      </div>
+    </div>
   );
 }

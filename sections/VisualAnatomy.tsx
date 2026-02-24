@@ -9,12 +9,12 @@ export default function VisualAnatomy() {
       <h2>Visual Anatomy</h2>
 
       <p>
-        Each of the four system message categories maps to a single visual type.
+        Each of the three system message categories maps to one or more visual types.
         Below are the component specifications, token references, and live rendered examples.
       </p>
 
       {/* Inline Notice */}
-      <h3 id="inline-notice">Inline Notice <span className="text-sm font-normal text-[var(--fluent-fg4)]">— Action Acknowledgment</span></h3>
+      <h3 id="inline-notice">Inline Notice <span className="text-sm font-normal text-[var(--fluent-fg4)]">— Action Feedback</span></h3>
       <p>
         Used for action confirmations. Lightweight, non-interruptive.
       </p>
@@ -119,54 +119,13 @@ export default function VisualAnatomy() {
         </p>
       </Callout>
 
-      {/* Boundary Marker */}
-      <h3 id="boundary-marker">Boundary Marker <span className="text-sm font-normal text-[var(--fluent-fg4)]">— Context Boundary</span></h3>
+      {/* Banner & Inline Notice — Access Notice */}
+      <h3 id="banner">Banner &amp; Inline Notice <span className="text-sm font-normal text-[var(--fluent-fg4)]">— Access Notice</span></h3>
       <p>
-        Used to indicate a change in visibility or interaction rules at a specific
-        point in the timeline.
+        Access Notice uses two visual expressions depending on scope.
       </p>
 
-      <LiveExample type="boundary-marker" label="Live Example" />
-
-      <SpecTable
-        columns={[
-          { header: "Element", key: "element", width: "20%" },
-          { header: "Required", key: "required", width: "15%" },
-          { header: "Description", key: "description" },
-        ]}
-        rows={[
-          {
-            element: "Icon",
-            required: "Yes",
-            description: "16px icon indicating the boundary type (e.g., lock icon for visibility).",
-          },
-          {
-            element: "Message text",
-            required: "Yes",
-            description: "Single sentence describing the boundary condition.",
-          },
-          {
-            element: "Divider line",
-            required: "Optional",
-            description: "A subtle horizontal line above or below the text to reinforce the boundary.",
-          },
-        ]}
-      />
-
-      <Callout type="tip" title="Token Reference">
-        <p>
-          Message text: <TokenBadge token="colorNeutralForeground3" value="#616161" /> Caption 1 / regular (12px/16px)
-        </p>
-        <p>
-          Icon: <TokenBadge token="colorNeutralForeground3" value="#616161" /> 16px
-        </p>
-        <p>
-          Container: No background. Whitespace + optional divider for separation. Spacing: 16px above and below.
-        </p>
-      </Callout>
-
-      {/* Banner */}
-      <h3 id="banner">Banner <span className="text-sm font-normal text-[var(--fluent-fg4)]">— Access Notice</span></h3>
+      <h4>Banner — conversation-wide</h4>
       <p>
         Used to communicate conversation-wide conditions. Prominent, positioned at the top.
       </p>
@@ -232,6 +191,51 @@ export default function VisualAnatomy() {
         </p>
         <p>
           Layout: Pinned to top, full width, 12px internal padding, no border-radius.
+        </p>
+      </Callout>
+
+      <h4 id="inline-marker">Inline Notice — point-specific</h4>
+      <p>
+        Used to indicate a change in visibility or interaction rules at a specific
+        point in the timeline.
+      </p>
+
+      <LiveExample type="inline-marker" label="Live Example" />
+
+      <SpecTable
+        columns={[
+          { header: "Element", key: "element", width: "20%" },
+          { header: "Required", key: "required", width: "15%" },
+          { header: "Description", key: "description" },
+        ]}
+        rows={[
+          {
+            element: "Icon",
+            required: "Yes",
+            description: "16px icon indicating the boundary type (e.g., lock icon for visibility).",
+          },
+          {
+            element: "Message text",
+            required: "Yes",
+            description: "Single sentence describing the boundary condition.",
+          },
+          {
+            element: "Divider line",
+            required: "Optional",
+            description: "A subtle horizontal line above or below the text to reinforce the boundary.",
+          },
+        ]}
+      />
+
+      <Callout type="tip" title="Token Reference">
+        <p>
+          Message text: <TokenBadge token="colorNeutralForeground3" value="#616161" /> Caption 1 / regular (12px/16px)
+        </p>
+        <p>
+          Icon: <TokenBadge token="colorNeutralForeground3" value="#616161" /> 16px
+        </p>
+        <p>
+          Container: No background. Whitespace + optional divider for separation. Spacing: 16px above and below.
         </p>
       </Callout>
     </section>
